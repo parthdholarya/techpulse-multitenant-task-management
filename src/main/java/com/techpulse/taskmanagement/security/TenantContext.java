@@ -1,7 +1,10 @@
+
 package com.techpulse.taskmanagement.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.util.Objects;
 
 public class TenantContext {
 
@@ -20,7 +23,10 @@ public class TenantContext {
             throw new IllegalStateException("User is not authenticated");
         }
 
-        return (TenantPrincipal) authentication.getPrincipal();
+        return Objects.requireNonNull(
+                (TenantPrincipal) authentication.getPrincipal(),
+                "Authenticated user principal cannot be null"
+        );
     }
 
     public static Long getCurrentTenantId() {

@@ -1,0 +1,4 @@
+app:
+  jwt:
+    secret: "VGhpc0lzQVRlc3RTZWNyZXRLZXlGb3JUZXN0aW5nMTIzNDU2"
+    expiration: 86400000

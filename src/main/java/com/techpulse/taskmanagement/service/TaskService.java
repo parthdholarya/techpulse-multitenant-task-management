@@ -113,7 +113,7 @@ public class TaskService {
         // Find user belonging to the same tenant
         User user = userRepository.findByIdAndTenant_Id(
                         request.userId(), tenantId)
-                .orElseThrow(() -> new RuntimeException(
+                .orElseThrow(() -> new ResourceNotFoundException(
                         "User not found in your tenant"));
 
         // Only assign tasks to MANAGER or USER? No!
